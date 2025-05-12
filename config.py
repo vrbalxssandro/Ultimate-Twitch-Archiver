@@ -4,7 +4,7 @@ TWITCH_CLIENT_SECRET = "HERE"  # Replace with your actual Client Secret
 TWITCH_CHANNEL_NAME = "HERE"  # Twitch channel to monitor for clips and restream
 
 # --- Clip Monitor Configuration ---
-DISCORD_WEBHOOK_URL_CLIPS = "HEREi"  # Webhook for clip notifications
+DISCORD_WEBHOOK_URL_CLIPS = "HERE"  # Webhook for clip notifications
 CHECK_INTERVAL_SECONDS_CLIPS = 30  # 5 minutes, How often to check for new clips
 CLIP_LOOKBACK_MINUTES = 2  # How far back to look for clips to avoid missing any due to timing
 
