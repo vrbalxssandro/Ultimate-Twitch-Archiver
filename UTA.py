@@ -283,15 +283,28 @@ def start_restream(username):
     ffmpeg_command = [
         config.FFMPEG_PATH,
         "-hide_banner",
-        "-i", "pipe:0",      # Input from stdin (Streamlink's stdout)
-        "-c:v", "copy",      # Copy video codec (no transcoding)
-        "-c:a", "copy",      # Copy audio codec (no transcoding)
-        "-f", "flv",         # Output format for RTMP
-        "-map", "0:v?",       # Map video stream if it exists
-        "-map", "0:a?",       # Map audio stream if it exists
-        "-bufsize", "4000k", # Adjust buffer size if needed
+        "-i", "pipe:0",          # Input from stdin (Streamlink's stdout)
+
+        # Video Settings: Still copy video to save CPU
+        "-c:v", "copy",
+
+        # Audio Settings: Transcode to AAC (standard for RTMP)
+        "-c:a", "aac",           # Explicitly encode audio to AAC
+        "-b:a", "160k",          # Set audio bitrate (e.g., 160kbps - adjust if needed 128k/192k)
+        "-ar", "44100",          # Optional: Set audio sample rate (44.1kHz is common) - remove if unsure
+        # "-ac", "2",            # Optional: Force stereo audio - remove if unsure
+
+        # Mapping: Be slightly more explicit, map first video and first audio stream if they exist
+        "-map", "0:v:0?",        # Map the first video stream (if present)
+        "-map", "0:a:0?",        # Map the first audio stream (if present)
+
+        # Output Settings
+        "-f", "flv",             # Output format for RTMP
+        "-bufsize", "4000k",     # Output buffer
         "-flvflags", "no_duration_filesize", # Recommended for live FLV
-        "-loglevel", "error", # Only log FFmpeg errors
+        # "-async", "1",         # Optional: Uncomment this if audio is out of sync after transcoding
+                                 # (-async 1 synchronizes audio to timestamps, might drop/dup samples)
+        "-loglevel", "warning",  # Changed to warning to see slightly more info if issues persist
         youtube_rtmp_full_url
     ]
 
