@@ -44,4 +44,16 @@
     "UTA_VIEWER_COUNT_LOGGING_ENABLED": true,
     "UTA_VIEWER_COUNT_LOG_INTERVAL_SECONDS": 300,
     "UTA_VIEWER_COUNT_LOG_FILE": "viewer_counts.bin"
+    
+    "BOT_SESSION_LOG_FILE": "bot_sessions.bin",
+    "UTA_YOUTUBE_API_ENABLED": true,
+    "UTA_YOUTUBE_CLIENT_SECRET_FILE": "client_secret.json",
+    "UTA_YOUTUBE_TOKEN_FILE": "youtube_token.json",
+    "UTA_YOUTUBE_PLAYLIST_ID": null,
+    "UTA_YOUTUBE_DEFAULT_PRIVACY": "public",
+    "UTA_YOUTUBE_MAKE_PUBLIC_AFTER_STREAM": false,
+    "UTA_YOUTUBE_SCHEDULED_ROLLOVER_HOURS": 11.5,
+    "UTA_YOUTUBE_DYNAMIC_TITLE_TEMPLATE": "{twitch_username} VOD | [{date}]",
+    "UTA_YOUTUBE_DYNAMIC_DESCRIPTION_TEMPLATE": "{twitch_username} https://twitch.tv/{twitch_username} \nGame: {game_name}\nTitle: {twitch_title}\n\nArchived by UTA.      {twitch_username} - {twitch_title} ({game_name}) - Part {part_num} [{date}]"
+
 }
